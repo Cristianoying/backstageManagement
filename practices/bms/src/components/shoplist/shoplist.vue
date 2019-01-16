@@ -3,22 +3,25 @@
     <template>
       <!--:data="10"-->
       <el-table
-
-        height="450"
+        :data="datalist"
+        height="470"
         border
         style="width: 100%">
         <el-table-column
-          prop="date"
+          prop="shopName"
           label="店铺名称"
           width="180">
         </el-table-column>
         <el-table-column
-          prop="name"
+          prop="shopLogo"
           label="店铺logo"
           width="140">
+          <template slot-scope="scope">
+            <img :src="scope.row.shopLogo">
+          </template>
         </el-table-column>
         <el-table-column
-          prop="address"
+          prop="shopAddress"
           label="店铺地址">
         </el-table-column>
         <el-table-column
@@ -37,25 +40,22 @@
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              @click="handleDelete(scope.$index, scope.row)">查看</el-button>
           </template>
         </el-table-column>
       </el-table>
     </template>
 
     <!--设置分页-->
-
-    <!--<div class="block">-->
+    <div class="block">
       <!--<span class="demonstration">显示总数</span>-->
-      <!--<el-pagination-->
-        <!--@size-change="handleSizeChange"-->
-        <!--@current-change="handleCurrentChange"-->
-        <!--:current-page.sync="currentPage1"-->
-        <!--:page-size="100"-->
-        <!--layout="total, prev, pager, next"-->
-        <!--:total="1000">-->
-      <!--</el-pagination>-->
-    <!--</div>-->
+      <el-pagination
+        @current-change="changepage(currentPage)"
+        :current-page.sync="currentPage"
+        layout="total, prev, pager, next"
+        :total="total">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -68,30 +68,44 @@
         method:'get',
         url:'/getdatalist'
       }).then((data)=>{
-        console.log(data);
         this.getdatalist(data);
       })
     },
     methods:{
       ...Vuex.mapActions({
-
+        changepage:'changepage'
       }),
       ...Vuex.mapMutations({
         getdatalist:'getdatalist'
-      })
+      }),
+      changepage(page){
+        var limit = 10;
+        console.log(page);
+          // this.changepage(limit)
+      }
     },
     computed: {
       ...Vuex.mapState({
-        datalist:state=>{
-          console.log( state.datalist );
-         return state.datalist
-        }
+        datalist:state=>state.datalist,
+        total:state=>state.total
 
       })
+    },
+    data() {
+      return {
+        currentpage:1
+      };
     }
   }
 </script>
 
 <style scoped>
-
+  #shoplist img{
+    width: 100px;
+    height: 70px;
+  }
+  .block{
+      margin: 0 auto;
+    text-align: center;
+  }
 </style>

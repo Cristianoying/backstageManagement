@@ -8,20 +8,23 @@ let store = new Vuex.Store({
 	state:{
 		token:'',
 		username:'',
-    datalist:[]
+    datalist:[],
+    total:0,
+    currentpage:1
 	},
 	mutations:{
-		handleGettoken(state,params){
-
-		},
     handleLogin(state,params){
 		    state.token =params.token;
 		    state.username=params.user;
     },
     getdatalist(state,params){
-		  console.log(params.data+'111111112222222222');
 		    state.datalist = params.data;
-		    console.log(state.datalist+'1111111');
+		    state.total = params.data.length;
+    },
+    changepage(state,params){
+        state.datalist = params.data.filter(()=>{
+            console.log(params);
+        })
     }
 
 	},
@@ -31,14 +34,26 @@ let store = new Vuex.Store({
 				method:'post',
 				url:'/api/api/login',
 				data:{
-					username:'admin',
-					password:'admin'
+					username:userInfo.username,
+					password:userInfo.password
 				}
 			}).then((data)=>{
-			  console.log(data)
          commit("handleLogin",data.data)
 			})
-		}
+		},
+    changepage({commit},params){
+        axios({
+          method:'post',
+          url:'/getdatalist'
+        }).then((data)=>{
+          var obj ={
+            data:data,
+            currentpage:params.currentpage,
+            limit:params.limit
+          }
+            commit('changepage',obj);
+        })
+    }
 	}
 
 
