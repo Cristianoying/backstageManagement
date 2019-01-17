@@ -9,6 +9,9 @@ import elementui from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './common/css/reset.css'
 import './api/api'
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts;
 
 Vue.use( Vuex )
 Vue.use( elementui );

@@ -1,0 +1,21 @@
+{
+    "window.zoomLevel": -1,
+    "editor.fontFamily": "微软雅黑",
+    "editor.fontSize": 18,
+    "files.associations": {
+        "*.html": "html"
+    },
+    "workbench.colorTheme": "Monokai",
+    "liveServer.settings.port": 8080,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "[html]": {},
+    "files.exclude":{
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/node_modules/": true
+    },
+    "git.ignoreLimitWarning": true
+}

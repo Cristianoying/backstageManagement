@@ -6,6 +6,8 @@ import Shoplist from '@/components/shoplist/shoplist'
 import Addshop from '@/components/shoplist/addshop'
 import Userlist from '@/components/userlist/userlist'
 import Manageusers from '@/components/userlist/manageusers'
+import chart1 from '@/components/shoplist/shoplistchart1.vue'
+import chart2 from '@/components/shoplist/shoplistchart2.vue'
 Vue.use(Router)
 
  var routers = new Router({
@@ -42,6 +44,16 @@ Vue.use(Router)
           path:'manageusers',
           name:'manageusers',
           component:Manageusers
+        },
+        {
+          path:'chart1',
+          name:'chart1',
+          component:chart1
+        },
+        {
+          path:'chart2',
+          name:'chart2',
+          component:chart2
         }
       ]
 

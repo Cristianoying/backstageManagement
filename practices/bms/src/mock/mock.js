@@ -14,12 +14,26 @@ var data = Mock.mock({
 let datalist = data.list;
 
 
-
+function editmsg(config){
+let body = JSON.parse(config.body);
+let data = body.form;
+    datalist.forEach((item)=>{
+            if(item.shopId ==data.shopId){
+                item.shopName=data.shopName;
+                item.shopAddress=data.shopAddress;
+                item.shopTel=data.shopTel;
+                item.shopcomments=data.shopcomments;
+            }
+    });
+    return datalist;
+}
 function  getdatalist() {
     return datalist;
 }
 
+
 // console.log(datalist);
 export default {
-    getdatalist
+    getdatalist,
+    editmsg
 }
