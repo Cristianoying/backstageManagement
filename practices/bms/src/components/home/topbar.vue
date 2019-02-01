@@ -36,7 +36,7 @@
           if(state.username){
             username = state.username;
           }else{
-            username = '请登录'
+            username = 'admin'
           }
           return  username;
         }

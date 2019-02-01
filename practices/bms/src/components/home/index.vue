@@ -20,13 +20,31 @@
   import Topbar from './topbar'
   import Main_left from './main-left'
   import Main_right from './main-right'
-
+  import Vuex from "vuex"
+  import Cookie from "js-cookie"
   export default {
     components: {
       Topbar,
       Main_left,
       Main_right
-    }
+    },
+created() {
+let obj = {
+username:Cookie.get("username"),
+token:Cookie.get("token")
+}
+this.handleLogin(obj);
+},
+  data(){
+return{
+
+}
+  },
+  methods: {
+    ...Vuex.mapMutations({
+        handleLogin:"handleLogin"
+    })
+  },
   }
 </script>
 

@@ -42,7 +42,7 @@
     <router-link :to="{name:'chart2'}">
       <el-menu-item index="4">
         <i class="el-icon-setting"></i>
-        <span slot="title">柱状图</span>
+        <span slot="title">地图信息</span>
       </el-menu-item>
       </router-link>
     </el-menu>

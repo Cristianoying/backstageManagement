@@ -1,5 +1,7 @@
 const userModel = require('../model/user');
 const JWT = require('jsonwebtoken');
+const fs = require("fs");
+const formidable = require("formidable");
 
 const userLogin = (req,res)=>{
 	// console.log(req.body);
@@ -43,6 +45,42 @@ const userLogin = (req,res)=>{
 	})
 }
 
+const addgType = (req, res, cb) => {
+
+
+
+    console.log(req)
+    // console.log("sadasd",req.file, "!11111111111111");
+    // var form = new formidable.IncomingForm();
+    // form.encoding = "utf-8";
+    // form.uploadDir = "../upload";
+    // form.keepExtensions = true;
+    // form.parse(req, (err, parmas, file) => {
+    //     console.log(parmas,"\n aaaaaaaaaaaaaaaaa",file)
+        // if (err) {
+        //     cb({
+        //         status: false,
+        //         msg: "网络连接错误"
+        //     })
+        // } else {
+        //     var picInfo = file[picName];
+        //     var obj = {
+        //         shopTypeName: parmas.shopTypeName,
+        //         orderNum: parmas.orderNum,
+        //         createTime: parmas.createTime,
+        //         upTime: Date.now()
+        //     }
+        //     userModel.addgType(obj, cb({
+        //         status: true,
+        //         msg:"success"
+        //     }))
+
+        // }
+
+    // })
+}
+
 module.exports = {
-	userLogin
+	userLogin,
+	addgType
 }
