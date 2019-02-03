@@ -45,18 +45,18 @@ const userLogin = (req,res)=>{
 	})
 }
 
-const addgType = (req, res, cb) => {
+const addgType = (req, res) => {
 
-
-
-    console.log(req)
     // console.log("sadasd",req.file, "!11111111111111");
-    // var form = new formidable.IncomingForm();
-    // form.encoding = "utf-8";
-    // form.uploadDir = "../upload";
-    // form.keepExtensions = true;
-    // form.parse(req, (err, parmas, file) => {
-    //     console.log(parmas,"\n aaaaaaaaaaaaaaaaa",file)
+    var form = new formidable.IncomingForm();
+    form.encoding = "utf-8";
+    form.uploadDir = "./upload";
+    form.keepExtensions = true;
+    form.parse(req, (err, parmas, file) => {
+		// console.log(parmas,"\n aaaaaaaaaaaaaaaaa",file)
+		
+
+		console.log(file.file.path);
         // if (err) {
         //     cb({
         //         status: false,
@@ -77,7 +77,7 @@ const addgType = (req, res, cb) => {
 
         // }
 
-    // })
+    })
 }
 
 module.exports = {

@@ -32,7 +32,7 @@
         <el-upload
           class="el-upload"
           ref="upload"
-          action="/api/api/addstore"
+          action=""
           :on-remove="handleRemove"
           :on-change="handlePreview"
           :file-list="fileList"
@@ -88,6 +88,7 @@ export default {
     },
     handleRemove(file, fileList) {
       console.log(file, fileList);
+      this.fileList.splice(0,1);
     },
     handlePreview(file) {
       console.log(file);
